@@ -22,8 +22,9 @@
  *
  */
 
-// const HDWallet = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const infuraKey = "77066924e4c14f578eb50b1410432117";
+const mnemonic = "pizza reveal during fame wife vendor sustain start close where trade evoke";
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -50,6 +51,13 @@ module.exports = {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 9545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+    },
+    // Useful for deploying to a public network.
+    // NB: It's important to wrap the provider as a function.
+    goerli: {
+      provider: () => new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/${infuraKey}`),
+        network_id: 5,       // goerli's id
+        gasPrice: 25000000000,
     },
 
     // Another network with more advanced options...
