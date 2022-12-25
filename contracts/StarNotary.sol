@@ -1,21 +1,33 @@
 pragma solidity >=0.4.24;
 
 //Importing openzeppelin-solidity ERC-721 implemented Standard
-// import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
-import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Metadata.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 
 // StarNotary Contract declaration inheritance the ERC721 openzeppelin implementation
-contract StarNotary is ERC721Metadata {
+contract StarNotary is ERC721 {
 
     // Star data
     struct Star {
         string name;
     }
 
-    // Implement Task 1 Add a name and symbol properties
-    // name: Is a short name to your token
-    // symbol: Is a short string like 'USD' -> 'American Dollar'
-    constructor(string memory _name, string memory _symbol) ERC721Metadata(_name, _symbol) public {
+    string _name;
+    string _symbol;
+
+    // // Implement Task 1 Add a name and symbol properties
+    // // name: Is a short name to your token
+    // // symbol: Is a short string like 'USD' -> 'American Dollar'
+    constructor(string memory name, string memory symbol) public {
+        _name = name;
+        _symbol = symbol;
+    }
+
+    function name() external view returns (string memory) {
+        return _name;
+    }
+
+    function symbol() external view returns (string memory) {
+        return _symbol;
     }
 
     // mapping the Star with the Owner Address
@@ -59,7 +71,8 @@ contract StarNotary is ERC721Metadata {
     // Implement Task 1 lookUptokenIdToStarInfo
     function lookUpTokenIdToStarInfo (uint _tokenId) public view returns (string memory name, address owner) {
         //1. You should return the Star saved in tokenIdToStarInfo mapping
-        return (tokenIdToStarInfo[_tokenId].name, ownerOf(_tokenId));
+        address ownerId = ownerOf(_tokenId);
+        return (tokenIdToStarInfo[_tokenId].name, ownerId);
     }
 
     // Implement Task 1 Exchange Stars function

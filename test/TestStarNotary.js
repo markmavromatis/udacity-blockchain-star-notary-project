@@ -8,6 +8,16 @@ contract('StarNotary', (accs) => {
     owner = accounts[0];
 });
 
+it('name/symbol test', async() => {
+    // 1. create a Star with different tokenId
+    let instance = await StarNotary.deployed();
+    const name = await instance.name();
+    const symbol = await instance.symbol();
+
+    assert.equal(name, "Udacity Star Token" );
+    assert.equal(symbol, "UST" );
+});
+
 it('can Create a Star', async() => {
     let tokenId = 1;
     let instance = await StarNotary.deployed();
