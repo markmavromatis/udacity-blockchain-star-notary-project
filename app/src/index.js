@@ -44,7 +44,7 @@ const App = {
     const { lookUpTokenIdToStarInfo } = this.meta.methods;
     const starId = document.getElementById("lookid").value;
     lookUpTokenIdToStarInfo(starId).call({from: this.account}).then((result) => {
-      const starName = result['name'];
+      const starName = result[0];
       App.setStatus("Star name is: " + starName + ".");
     });
     

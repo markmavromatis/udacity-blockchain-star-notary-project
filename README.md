@@ -136,3 +136,12 @@ compilers: {
 ---
 
 Do not use the [Old depreacted zipped starter code](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c51c4c0_project-5-starter-code/project-5-starter-code.zip)
+
+
+
+#### Submission Details
+
+Truffle version: 5.7.0
+ERC-721 Token Name: Udacity Star Token
+ERC-721 Token Symbol: UST
+Token Address on Goerli Network: 0xeeF4d202533AAa3844B8125587090724fF6652a4

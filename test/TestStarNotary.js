@@ -118,8 +118,8 @@ it('lets 2 users exchange stars', async() => {
     await instance.exchangeStars(star1TokenId, star2TokenId);
 
     // 3. Verify that the owners changed
-    const star1NewOwner = (await instance.lookUpTokenIdToStarInfo(star1TokenId))["owner"];
-    const star2NewOwner = (await instance.lookUpTokenIdToStarInfo(star2TokenId))["owner"];
+    const star1NewOwner = (await instance.lookUpTokenIdToStarInfo(star1TokenId))[1];
+    const star2NewOwner = (await instance.lookUpTokenIdToStarInfo(star2TokenId))[1];
     assert.equal(star1OriginalOwner, star2NewOwner);
     assert.equal(star2OriginalOwner, star1NewOwner);
 
@@ -138,7 +138,7 @@ it('lets a user transfer a star', async() => {
     await instance.transferStar(starTransferToOwner, starTokenId);
 
     // 3. Verify the star owner changed.
-    const starNewOwner = (await instance.lookUpTokenIdToStarInfo(starTokenId))["owner"];
+    const starNewOwner = (await instance.lookUpTokenIdToStarInfo(starTokenId))[1];
     assert.equal(starTransferToOwner, starNewOwner);
 
 });
@@ -155,6 +155,6 @@ it('lookUptokenIdToStarInfo test', async() => {
     const starInfo = await instance.lookUpTokenIdToStarInfo(starTokenId);
 
     // 3. Verify if you Star name is the same
-    const actualStarName = starInfo["name"];
+    const actualStarName = starInfo[0];
     assert.equal(starName, actualStarName);
 });
